@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MovieList from '../../components/MovieList/MovieList';
 
 class HomePage extends Component {
   render() {
     return (
       <div>
-        <p>I do something</p>
+        <MovieList />
       </div>
     );
   }
