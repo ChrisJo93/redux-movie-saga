@@ -13,8 +13,26 @@ import { takeEvery, takeLatest, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 // Create the rootSaga generator function
-function* rootSaga() {}
+function* rootSaga() {
+  yield takeLatest('GET_MOVIES', getMovieSaga);
+}
 
+function* getMovieSaga(action) {
+  try {
+    yield put({ type: 'ERROR_RESET' });
+    const response = yield axios.get('/api/movie');
+    yield put({
+      type: 'SET_MOVIES',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({
+      type: 'ERROR_MSG',
+      payload: 'There was a problem in GET',
+    });
+  }
+}
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
