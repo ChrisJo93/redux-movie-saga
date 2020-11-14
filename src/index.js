@@ -65,6 +65,15 @@ const selectedMovieReducer = (state = [], action) => {
   }
 };
 
+const newMovieReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'NEW_MOVIE':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
   switch (action.type) {
@@ -91,6 +100,7 @@ const storeInstance = createStore(
     movies,
     genres,
     selectedMovieReducer,
+    newMovieReducer,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)

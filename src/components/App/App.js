@@ -21,7 +21,7 @@ class App extends Component {
               {/* has button to return to home */}
             </button>
             <button>
-              <Link to="add">Add Movie</Link>{' '}
+              <Link to="/add">Add Movie</Link>{' '}
               {/*save and cancel button back to home*/}
             </button>
           </nav>
