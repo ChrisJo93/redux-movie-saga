@@ -25,6 +25,9 @@ class DetailsPage extends Component {
             <DetailsItem key={key} item={item} />
           ))}
         </div>
+        <div>
+          <button onClick={this.return}>Return to Movie List</button>
+        </div>
       </div>
     );
   }
