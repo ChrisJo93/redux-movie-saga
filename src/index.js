@@ -30,7 +30,7 @@ function* getMovieSaga(action) {
     console.log(err);
     yield put({
       type: 'ERROR_MSG',
-      payload: 'There was a problem in GET',
+      payload: 'There was a problem in GET MOVIE SAGA',
     });
   }
 }

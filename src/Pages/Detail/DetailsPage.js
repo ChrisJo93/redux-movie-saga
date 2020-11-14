@@ -11,6 +11,10 @@ class DetailsPage extends Component {
     });
   }
 
+  return = (event) => {
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <div>
@@ -25,6 +29,7 @@ class DetailsPage extends Component {
             <DetailsItem key={key} item={item} />
           ))}
         </div>
+        <br />
         <div>
           <button onClick={this.return}>Return to Movie List</button>
         </div>

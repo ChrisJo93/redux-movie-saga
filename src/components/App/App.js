@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import AddMoviePage from '../../Pages/Add/AddMoviePage';
 import DetailsPage from '../../Pages/Detail/DetailsPage';
 import HomePage from '../../Pages/Home/HomePage';
 import './App.css';
@@ -27,7 +28,7 @@ class App extends Component {
           <br />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/details" component={DetailsPage} />
-          <Route exact path="/add" component={''} />
+          <Route exact path="/add" component={AddMoviePage} />
         </Router>
       </div>
     );
