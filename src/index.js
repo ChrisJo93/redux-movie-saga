@@ -36,8 +36,9 @@ function* getMovieSaga(action) {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-// Used to store movies returned from the server
+// Reducers
 const selectedMovieReducer = (state = [], action) => {
+  //stores only selected movie to send to details
   switch (action.type) {
     case 'SELECT_MOVIES':
       return action.payload;
@@ -46,6 +47,7 @@ const selectedMovieReducer = (state = [], action) => {
   }
 };
 
+// Used to store movies returned from the server
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
