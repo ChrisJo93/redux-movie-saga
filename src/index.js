@@ -15,6 +15,7 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeLatest('GET_MOVIES', getMovieSaga);
+  yield takeLatest('GET_GENRES', getGenreSaga);
 }
 
 function* getMovieSaga(action) {
@@ -30,6 +31,23 @@ function* getMovieSaga(action) {
     yield put({
       type: 'ERROR_MSG',
       payload: 'There was a problem in GET',
+    });
+  }
+}
+
+function* getGenreSaga(action) {
+  try {
+    yield put({ type: 'ERROR_RESET' });
+    const response = yield axios.get(`/api/genre/${action.payload}`);
+    yield put({
+      type: 'SET_GENRES',
+      payload: response.data,
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({
+      type: 'ERROR_MSG',
+      payload: 'There is a problem in get genre',
     });
   }
 }
