@@ -4,6 +4,10 @@ import { withRouter } from 'react-router-dom';
 
 class MovieItem extends Component {
   toDetails = (event) => {
+    this.props.dispatch({
+      type: 'SELECT_MOVIES',
+      payload: this.props.movieItem,
+    });
     this.props.history.push('/details');
   };
 
