@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class DetailsPage extends Component {
-  componentDidMount() {}
-
-  selectedMovie = () => {
-    this.props.dispatch({ type: 'SELECT_MOVIES' });
-  };
-
   render() {
     return (
-      <div>{this.props.store.selectedMovieReducer}I still do something too</div>
+      <div>
+        <div>{this.props.store.selectedMovieReducer.title}</div>
+        <div>
+          <img src={this.props.store.selectedMovieReducer.poster} />
+        </div>
+        <div>{this.props.store.selectedMovieReducer.description}</div>
+      </div>
     );
   }
 }

@@ -39,7 +39,7 @@ const sagaMiddleware = createSagaMiddleware();
 // Used to store movies returned from the server
 const selectedMovieReducer = (state = [], action) => {
   switch (action.type) {
-    case 'SELECT_MOVIE':
+    case 'SELECT_MOVIES':
       return action.payload;
     default:
       return state;
