@@ -16,6 +16,7 @@ import axios from 'axios';
 function* rootSaga() {
   yield takeLatest('GET_MOVIES', getMovieSaga);
   yield takeLatest('GET_GENRES', getGenreSaga);
+  yield takeLatest('GET_ALL_GENRES', getAllGenreSaga);
 }
 
 function* getMovieSaga(action) {
@@ -49,6 +50,17 @@ function* getGenreSaga(action) {
       type: 'ERROR_MSG',
       payload: 'There is a problem in get genre',
     });
+  }
+}
+
+function* getAllGenreSaga(action) {
+  try {
+    yield put({ type: 'ERROR_RESET' });
+    const response = yield axios.get(`/api/genre/`);
+    yield put({ type: 'SET_GENRES', payload: response.data });
+  } catch (err) {
+    console.log(err);
+    yield put({ type: 'ERROR_MSG', payload: 'THERE BE A FUCK UP' });
   }
 }
 // Create sagaMiddleware

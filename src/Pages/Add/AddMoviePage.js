@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import GenreId from '../../components/GenreId';
 
 class AddMoviePage extends Component {
   // creating new movie to send to new movie reducer
@@ -12,6 +13,10 @@ class AddMoviePage extends Component {
       genre: '',
     },
   };
+
+  componentDidMount() {
+    this.props.dispatch({ type: 'GET_ALL_GENRES' });
+  }
 
   cancel = (event) => {
     this.props.history.push('/');
@@ -52,16 +57,23 @@ class AddMoviePage extends Component {
           name="Description"
           onChange={(event) => this.handleInput(event, 'description')}
         />
-        <input
-          type="dropdown"
-          placeholder="Genres"
-          name="Genres"
+        <label>Choose a Genre</label>
+
+        <select
+          name="genres"
+          id="genres"
           onChange={(event) => this.handleInput(event, 'genre')}
-        />
+        >
+          {this.props.store.genres.map((item, index) => (
+            <GenreId key={index} genre={item.name} />
+          ))}
+        </select>
         <div>
           {/* displaying results of inputs */}
           <div>{this.props.store.newMovieReducer.title}</div>
-          <div>{this.props.store.newMovieReducer.poster}</div>
+          <div>
+            <img src={this.props.store.newMovieReducer.poster} />
+          </div>
           <div>{this.props.store.newMovieReducer.description}</div>
           <div>{this.props.store.newMovieReducer.genre}</div>
         </div>

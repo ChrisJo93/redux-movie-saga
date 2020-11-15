@@ -18,4 +18,18 @@ router.get('/:id', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+router.get('/', (req, res) => {
+  let queryText = 'SELECT * FROM "genres" ORDER BY "id";';
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log('error in server GET', error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
