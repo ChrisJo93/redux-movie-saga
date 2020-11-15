@@ -23,8 +23,8 @@ class AddMoviePage extends Component {
   };
 
   save = (event) => {
-    //send back to homepage
     this.props.dispatch({ type: 'NEW_MOVIE', payload: this.state.newMovie });
+    this.props.history.push('/');
   };
 
   handleInput = (event, fieldKey) => {
