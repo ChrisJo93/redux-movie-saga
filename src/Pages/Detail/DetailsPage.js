@@ -57,7 +57,7 @@ class DetailsPage extends Component {
                 <Typography variant="body2" color="textSecondary" component="p">
                   {this.props.store.selectedMovieReducer.description}
                   <br />
-                  <p className="genreText">Genres:</p>
+                  <span className="genreText">Genres:</span>
                   {this.props.store.genres.map((item, key) => (
                     <DetailsItem key={key} item={item} />
                   ))}
