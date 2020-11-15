@@ -1,7 +1,15 @@
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@material-ui/core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import DetailsItem from '../../components/DetailsItem/DetailsItem';
+import './details.css';
 
 class DetailsPage extends Component {
   componentDidMount() {
@@ -19,7 +27,7 @@ class DetailsPage extends Component {
   render() {
     return (
       <div>
-        <div>{this.props.store.selectedMovieReducer.title}</div>
+        {/* <div>{this.props.store.selectedMovieReducer.title}</div>
         <div>
           <img src={this.props.store.selectedMovieReducer.poster} />
         </div>
@@ -30,9 +38,33 @@ class DetailsPage extends Component {
             <DetailsItem key={key} item={item} />
           ))}
         </div>
-        <br />
+        <br /> */}
         <div>
           <button onClick={this.return}>Return to Movie List</button>
+        </div>
+        <div className="rootDetail mediaDetail">
+          <Card>
+            <CardActionArea>
+              <CardMedia
+                className="mediaDetail"
+                image={this.props.store.selectedMovieReducer.poster}
+                title={this.props.store.selectedMovieReducer.title}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {this.props.store.selectedMovieReducer.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {this.props.store.selectedMovieReducer.description}
+                  <br />
+                  <p className="genreText">Genres:</p>
+                  {this.props.store.genres.map((item, key) => (
+                    <DetailsItem key={key} item={item} />
+                  ))}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
         </div>
       </div>
     );
