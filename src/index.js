@@ -31,7 +31,6 @@ function* postNewMovieSaga(action) {
 
 function* getMovieSaga(action) {
   try {
-    yield put({ type: 'ERROR_RESET' });
     const response = yield axios.get('/api/movie');
     yield put({
       type: 'SET_MOVIES',
@@ -48,7 +47,6 @@ function* getMovieSaga(action) {
 
 function* getGenreSaga(action) {
   try {
-    yield put({ type: 'ERROR_RESET' });
     const response = yield axios.get(`/api/genre/${action.payload}`);
     yield put({
       type: 'SET_GENRES',
@@ -65,7 +63,6 @@ function* getGenreSaga(action) {
 
 function* getAllGenreSaga(action) {
   try {
-    yield put({ type: 'ERROR_RESET' });
     const response = yield axios.get(`/api/genre/`);
     yield put({ type: 'SET_GENRES', payload: response.data });
   } catch (err) {

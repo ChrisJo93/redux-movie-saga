@@ -23,6 +23,7 @@ class AddMoviePage extends Component {
   };
 
   save = (event) => {
+    //send back to homepage
     this.props.dispatch({ type: 'NEW_MOVIE', payload: this.state.newMovie });
   };
 
@@ -57,17 +58,17 @@ class AddMoviePage extends Component {
           name="Description"
           onChange={(event) => this.handleInput(event, 'description')}
         />
-        {/* <label>Choose a Genre</label> */}
+        <label>Choose a Genre</label>
         {/* looping through genres. Populating dropdown menu. */}
-        {/* <select
+        <select
           name="genres"
           id="genres"
-          onChange={(event) => this.handleInput(event, 'genre')}
+          onChange={(event) => this.handleInput(event, 'genre_id')}
         >
           {this.props.store.genres.map((item, index) => (
-            <GenreId key={index} genre={item.name} />
+            <GenreId key={index} genre={item.name} id={item.id} />
           ))}
-        </select> */}
+        </select>
         <div>
           {/* displaying results of inputs */}
           <div>{this.props.store.newMovieReducer.title}</div>

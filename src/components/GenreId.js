@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class GenreId extends Component {
   render() {
-    return <option>{this.props.genre}</option>;
+    return <option value={this.props.id}>{this.props.genre}</option>;
   }
 }
 const mapStoreToProps = (store) => ({ store });
