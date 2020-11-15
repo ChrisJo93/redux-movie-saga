@@ -17,6 +17,16 @@ function* rootSaga() {
   yield takeLatest('GET_MOVIES', getMovieSaga);
   yield takeLatest('GET_GENRES', getGenreSaga);
   yield takeLatest('GET_ALL_GENRES', getAllGenreSaga);
+  yield takeLatest('NEW_MOVIE', postNewMovieSaga);
+}
+
+function* postNewMovieSaga(action) {
+  try {
+    yield axios.post('/api/movie', action.payload);
+    yield put({ type: 'GET_MOVIES' });
+  } catch (err) {
+    console.log('ERROR POSTING MOVIE:', action.payload);
+  }
 }
 
 function* getMovieSaga(action) {

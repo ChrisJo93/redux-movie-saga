@@ -57,9 +57,9 @@ class AddMoviePage extends Component {
           name="Description"
           onChange={(event) => this.handleInput(event, 'description')}
         />
-        <label>Choose a Genre</label>
+        {/* <label>Choose a Genre</label> */}
         {/* looping through genres. Populating dropdown menu. */}
-        <select
+        {/* <select
           name="genres"
           id="genres"
           onChange={(event) => this.handleInput(event, 'genre')}
@@ -67,7 +67,7 @@ class AddMoviePage extends Component {
           {this.props.store.genres.map((item, index) => (
             <GenreId key={index} genre={item.name} />
           ))}
-        </select>
+        </select> */}
         <div>
           {/* displaying results of inputs */}
           <div>{this.props.store.newMovieReducer.title}</div>

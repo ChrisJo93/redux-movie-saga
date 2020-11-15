@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
 
       // Depending on how you make your junction table, this insert COULD change.
       const insertMovieGenreQuery = `
-      INSERT INTO "movie_genres" ("movies_id", "genre_id")
+      INSERT INTO "movie_genre" ("movies_id", "genre_id")
       VALUES  ($1, $2);
       `;
       // SECOND QUERY MAKES GENRE FOR THAT NEW MOVIE
