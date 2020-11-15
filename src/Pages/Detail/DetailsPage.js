@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   CardActionArea,
   CardContent,
@@ -40,7 +41,7 @@ class DetailsPage extends Component {
         </div>
         <br /> */}
         <div>
-          <button onClick={this.return}>Return to Movie List</button>
+          <Button onClick={this.return}>Return to Movie List</Button>
         </div>
         <div className="rootDetail mediaDetail">
           <Card>

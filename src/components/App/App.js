@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import AddMoviePage from '../../Pages/Add/AddMoviePage';
@@ -13,17 +14,17 @@ class App extends Component {
         <h1>Movies!</h1>
         <Router>
           <nav>
-            <button>
+            <Button>
               <Link to="/">Home</Link> {/* shows full list of movies*/}
-            </button>
-            <button>
+            </Button>
+            <Button>
               <Link to="/details">Movie Details</Link>{' '}
               {/* has button to return to home */}
-            </button>
-            <button>
+            </Button>
+            <Button>
               <Link to="/add">Add Movie</Link>{' '}
               {/*save and cancel button back to home*/}
-            </button>
+            </Button>
           </nav>
           <br />
           <Route exact path="/" component={HomePage} />
