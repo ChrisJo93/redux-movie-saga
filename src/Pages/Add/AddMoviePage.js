@@ -58,7 +58,7 @@ class AddMoviePage extends Component {
           onChange={(event) => this.handleInput(event, 'description')}
         />
         <label>Choose a Genre</label>
-
+        {/* looping through genres. Populating dropdown menu. */}
         <select
           name="genres"
           id="genres"

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import DetailsItem from './DetailsItem';
+import DetailsItem from '../../components/DetailsItem/DetailsItem';
 
 class DetailsPage extends Component {
   componentDidMount() {
