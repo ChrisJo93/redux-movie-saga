@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class DetailsItem extends Component {
   render() {
+    // displaying genres
     return <div>{this.props.item.name}</div>;
   }
 }

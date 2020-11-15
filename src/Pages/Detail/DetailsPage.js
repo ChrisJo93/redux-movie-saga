@@ -5,6 +5,7 @@ import DetailsItem from './DetailsItem';
 
 class DetailsPage extends Component {
   componentDidMount() {
+    //fetching genre type for specific movie
     this.props.dispatch({
       type: 'GET_GENRES',
       payload: this.props.store.selectedMovieReducer.id,

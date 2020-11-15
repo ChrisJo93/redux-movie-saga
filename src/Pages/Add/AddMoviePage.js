@@ -18,7 +18,6 @@ class AddMoviePage extends Component {
   };
 
   save = (event) => {
-    console.log('it do be savin');
     this.props.dispatch({ type: 'NEW_MOVIE', payload: this.state.newMovie });
   };
 
@@ -60,9 +59,7 @@ class AddMoviePage extends Component {
           onChange={(event) => this.handleInput(event, 'genre')}
         />
         <div>
-          {/* {this.props.store.newMovieReducer.map((item, index) => {
-            return <AddMovieItem key={index} item={item} />;
-          })} */}
+          {/* displaying results of inputs */}
           <div>{this.props.store.newMovieReducer.title}</div>
           <div>{this.props.store.newMovieReducer.poster}</div>
           <div>{this.props.store.newMovieReducer.description}</div>
