@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import AddMovieItem from './AddMovieItem';
 
 class AddMoviePage extends Component {
-  //need to capture state to send it to reducer
+  // creating new movie to send to new movie reducer
   state = {
     newMovie: {
       title: '',
@@ -23,17 +22,51 @@ class AddMoviePage extends Component {
     this.props.dispatch({ type: 'NEW_MOVIE', payload: this.state.newMovie });
   };
 
+  handleInput = (event, fieldKey) => {
+    //single function to handle all input field changes
+    this.setState({
+      newMovie: {
+        ...this.state.newMovie,
+        [fieldKey]: event.target.value,
+      },
+    });
+  };
+
   render() {
     return (
       <div>
-        <input type="text" placeholder="Movie Title" name="title" />
-        <input type="text" placeholder="Poster" name="Poster URL" />
-        <input type="text" placeholder="Description" name="Description" />
-        <input type="dropdown" placeholder="Genres" name="Genres" />
+        <input
+          type="text"
+          placeholder="Movie Title"
+          name="title"
+          onChange={(event) => this.handleInput(event, 'title')}
+        />
+        <input
+          type="text"
+          placeholder="Poster"
+          name="Poster URL"
+          onChange={(event) => this.handleInput(event, 'poster')}
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          name="Description"
+          onChange={(event) => this.handleInput(event, 'description')}
+        />
+        <input
+          type="dropdown"
+          placeholder="Genres"
+          name="Genres"
+          onChange={(event) => this.handleInput(event, 'genre')}
+        />
         <div>
-          {this.props.store.newMovieReducer.map((item, index) => {
+          {/* {this.props.store.newMovieReducer.map((item, index) => {
             return <AddMovieItem key={index} item={item} />;
-          })}
+          })} */}
+          <div>{this.props.store.newMovieReducer.title}</div>
+          <div>{this.props.store.newMovieReducer.poster}</div>
+          <div>{this.props.store.newMovieReducer.description}</div>
+          <div>{this.props.store.newMovieReducer.genre}</div>
         </div>
         <div>
           <button onClick={this.cancel}>Cancel</button>
