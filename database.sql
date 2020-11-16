@@ -39,19 +39,48 @@ VALUES
 ('Titanic', 'images/titanic.jpg', 'Titanic is a 1997 American epic romance and disaster film directed, written, co-produced, and co-edited by James Cameron. A fictionalized account of the sinking of the RMS Titanic, it stars Leonardo DiCaprio and Kate Winslet as members of different social classes who fall in love aboard the ship during its ill-fated maiden voyage.'),
 ('Toy Story', 'images/toy-story.jpg', 'Toy Story is a 1995 American computer-animated adventure comedy film produced by Pixar Animation Studios and released by Walt Disney Pictures. The feature-film directorial debut of John Lasseter, it was the first feature-length film to be entirely computer-animated, as well as the first feature film from Pixar. The screenplay was written by Joss Whedon, Andrew Stanton, Joel Cohen, and Alec Sokolow from a story by Lasseter, Stanton, Pete Docter, and Joe Ranft. The film features music by Randy Newman, and was executive-produced by Steve Jobs and Edwin Catmull. The film features the voices of Tom Hanks, Tim Allen, Don Rickles, Wallace Shawn, John Ratzenberger, Jim Varney, Annie Potts, R. Lee Ermey, John Morris, Laurie Metcalf, and Erik von Detten. Taking place in a world where anthropomorphic toys come to life when humans are not present, its plot focuses on the relationship between an old-fashioned pull-string cowboy doll named Woody and an astronaut action figure, Buzz Lightyear, as they evolve from rivals competing for the affections of their owner Andy Davis to friends who work together to be reunited with him after being separated.');
 
--- starter genres
-INSERT INTO "genres" ("name")
-VALUES 
-('Adventure'),
-('Animated'),
-('Biographical'),
-('Comedy'),
-('Disaster'),
-('Drama'),
-('Epic'),
-('Fantasy'),
-('Musical'),
-('Romantic'),
-('Science Fiction'),
-('Space-Opera'),
-('Superhero');
+
+CREATE TABLE "movie_genre" (
+id serial primary key,
+"movies_id" int references "movies",
+"genre_id" int references "genres"
+);
+
+INSERT INTO "movie_genre" ("movies_id", "genre_id")
+VALUES (1,1)
+
+INSERT INTO "movie_genre" ("movies_id", "genre_id")
+VALUES
+(1, 11),
+(1, 7),
+(2, 2),
+(2, 9),
+(3, 13),
+(3, 1),
+(4, 2),
+(4, 4),
+(5, 6),
+(5, 10),
+(6, 8),
+(6, 1),
+(7, 1),
+(8, 8),
+(8, 1),
+(9, 2),
+(9, 4),
+(10, 11),
+(10, 12),
+(11, 11),
+(11, 6),
+(12, 3),
+(12, 6),
+(13, 10),
+(13, 5),
+(13, 6),
+(14, 2),
+(14, 4);
+
+SELECT "genres".name FROM "movies"
+JOIN "movie_genre" ON "movies".id = "movie_genre".movies_id
+JOIN "genres" ON "movie_genre".genre_id = "genres".id
+WHERE "movies".id = 1;
