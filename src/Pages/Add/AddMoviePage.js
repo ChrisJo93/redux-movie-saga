@@ -1,7 +1,9 @@
+import { TextField } from '@material-ui/core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GenreId from '../../components/GenreId';
+import './addmovie.css';
 
 class AddMoviePage extends Component {
   // creating new movie to send to new movie reducer
@@ -39,37 +41,46 @@ class AddMoviePage extends Component {
 
   render() {
     return (
-      <div>
-        <input
-          type="text"
-          placeholder="Movie Title"
-          name="title"
-          onChange={(event) => this.handleInput(event, 'title')}
-        />
-        <input
-          type="text"
-          placeholder="Poster"
-          name="Poster URL"
-          onChange={(event) => this.handleInput(event, 'poster')}
-        />
-        <input
-          type="text"
-          placeholder="Description"
-          name="Description"
-          onChange={(event) => this.handleInput(event, 'description')}
-        />
-        <label>Choose a Genre</label>
-        {/* looping through genres. Populating dropdown menu. */}
-        <select
-          name="genres"
-          id="genres"
-          onChange={(event) => this.handleInput(event, 'genre_id')}
-        >
-          {this.props.store.genres.map((item, index) => (
-            <GenreId key={index} genre={item.name} id={item.id} />
-          ))}
-        </select>
+      <div className="contentBox">
         <div>
+          <TextField
+            className="centerInput"
+            type="text"
+            placeholder="Movie Title"
+            name="title"
+            onChange={(event) => this.handleInput(event, 'title')}
+          />
+        </div>
+        <div className="centerInput">
+          <TextField
+            type="text"
+            placeholder="Poster"
+            name="Poster URL"
+            onChange={(event) => this.handleInput(event, 'poster')}
+          />
+        </div>
+        <div className="centerInput">
+          <TextField
+            type="text"
+            placeholder="Description"
+            name="Description"
+            onChange={(event) => this.handleInput(event, 'description')}
+          />
+        </div>
+        <div className="centerInput">
+          <label>Choose a Genre</label>
+          {/* looping through genres. Populating dropdown menu. */}
+          <select
+            name="genres"
+            id="genres"
+            onChange={(event) => this.handleInput(event, 'genre_id')}
+          >
+            {this.props.store.genres.map((item, index) => (
+              <GenreId key={index} genre={item.name} id={item.id} />
+            ))}
+          </select>
+        </div>
+        <div className="centerInput">
           {/* displaying results of inputs */}
           <div>{this.props.store.newMovieReducer.title}</div>
           <div>
